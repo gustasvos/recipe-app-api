@@ -9,6 +9,7 @@ from django.contrib.auth.models import (
     PermissionsMixin
 )
 
+
 class UserManager(BaseUserManager):
     
     def create_user(self, email, password=None, **extra_fields):
@@ -28,11 +29,10 @@ class UserManager(BaseUserManager):
 
         return user
 
+
 # AbstactBaseUser contains the funcionality for auth system
 # PermissionsMixin contains the funcionality for permissions and fields
 class User(AbstractBaseUser, PermissionsMixin):
-
-    # User in the system
     email = models.EmailField(max_length=255, unique=True)
     name = models.CharField(max_length=255)
     is_active = models.BooleanField(default=True)
